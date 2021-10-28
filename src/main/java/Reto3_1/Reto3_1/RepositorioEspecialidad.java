@@ -19,5 +19,8 @@ public class RepositorioEspecialidad {
     } 
     public ModeloEspecialidad save(ModeloEspecialidad specialty){
         return crud.save(specialty);
-    }    
+    }     
+    public void delete(ModeloEspecialidad specialty){
+        crud.delete(specialty);
+    }
 }

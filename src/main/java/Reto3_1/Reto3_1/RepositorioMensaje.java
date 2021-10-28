@@ -20,5 +20,8 @@ public class RepositorioMensaje {
     public ModeloMensaje save(ModeloMensaje message){
         return crud3.save(message);
     }
+    public void delete(ModeloMensaje message){
+        crud3.delete(message);
+    }
     
 }

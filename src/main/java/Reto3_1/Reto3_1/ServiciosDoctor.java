@@ -31,5 +31,42 @@ public class ServiciosDoctor {
             }
         }
     }
+
+    public ModeloDoctor update(ModeloDoctor doctor){
+        if(doctor.getId()!=null){
+            Optional<ModeloDoctor> e=metodosCrud.getDoctor(doctor.getId());
+            if(!e.isEmpty()){
+                if(doctor.getName()!=null){
+                    e.get().setName(doctor.getName());
+                }
+                if(doctor.getDepartment()!=null){
+                    e.get().setDepartment(doctor.getDepartment());
+                }
+                if(doctor.getYear()!=null){
+                    e.get().setYear(doctor.getYear());
+                }
+                if(doctor.getDescription()!=null){
+                    e.get().setDescription(doctor.getDescription());
+                }
+                if(doctor.getSpecialty()!=null){
+                    e.get().setSpecialty(doctor.getSpecialty());
+                }
+                metodosCrud.save(e.get());
+                return e.get();
+            }else{
+                return doctor;
+            }
+        }else{
+            return doctor;
+        }
+    }
+
+    public boolean deleteDoctor(int doctorId) {
+        Boolean aBoolean = getDoctor(doctorId).map(doctor -> {
+            metodosCrud.delete(doctor);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
     
 }
