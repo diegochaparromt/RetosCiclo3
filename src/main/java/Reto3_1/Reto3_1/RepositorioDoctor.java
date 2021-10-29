@@ -20,4 +20,7 @@ public class RepositorioDoctor {
     public ModeloDoctor save(ModeloDoctor doctor){
         return crud.save(doctor);
     }    
+    public void delete(ModeloDoctor doctor){
+        crud.delete(doctor);
+    }
 }

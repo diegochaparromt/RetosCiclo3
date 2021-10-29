@@ -19,5 +19,8 @@ public class RepositorioCliente {
     }
     public ModeloCliente save(ModeloCliente client){
         return crud.save(client);
-    }    
+    }  
+    public void delete(ModeloCliente client){
+        crud.delete(client);
+    }  
 }

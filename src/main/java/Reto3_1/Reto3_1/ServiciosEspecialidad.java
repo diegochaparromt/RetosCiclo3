@@ -30,6 +30,28 @@ public class ServiciosEspecialidad {
                 return specialty;
             }
         }
+    }   
+
+    public ModeloEspecialidad update(ModeloEspecialidad specialty){
+        if(specialty.getId()!=null){
+            Optional<ModeloEspecialidad>g=metodosCrud.getSpecialty(specialty.getId());
+            if(!g.isEmpty()){
+                if(specialty.getDescription()!=null){
+                    g.get().setDescription(specialty.getDescription());
+                }
+                if(specialty.getName()!=null){
+                    g.get().setName(specialty.getName());
+                }
+                return metodosCrud.save(g.get());
+            }
+        }
+        return specialty;
     }
-    
+    public boolean deletespecialty(int specialtyId){
+        Boolean d=getSpecialty(specialtyId).map(specialty -> {
+            metodosCrud.delete(specialty);
+            return true;
+        }).orElse(false);
+        return d;
+    } 
 }
